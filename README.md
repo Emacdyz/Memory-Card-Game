@@ -2,8 +2,6 @@
 
 Multiplayer game made by 3 students of Codaisseur Academy: Abbas, Anna and myself 
 
-Codaisseur Academy
-
 Made with:
 
 React
