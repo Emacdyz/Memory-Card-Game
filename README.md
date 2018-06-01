@@ -11,3 +11,13 @@ Made with:
 
 The assisgnment consisted on building a new game from the code of Tic Tac Toe Multiplayer game, gave by the teacher. This way, we learned to understand other's code and work with it.
 
+## Client side
+
+Run the app 🚀
+
+* Clone this repo
+* Run ` yarn` in your terminal to instal the dependencies
+* Run `yarn start` to run app
+
+
+
