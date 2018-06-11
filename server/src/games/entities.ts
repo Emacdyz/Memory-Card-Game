@@ -2,24 +2,19 @@ import { BaseEntity, PrimaryGeneratedColumn, Column, Entity, Index, OneToMany, M
 import User from '../users/entity'
 
 export type Symbol = 'x' | 'o'
-// export type Row = [ number, number, number, number]
-//export type Board = Number[]
 export type Board = Tile[]
 
 export type Tile = {
   id: number
- // url: string
   flipped: boolean
   matched: boolean
 }
 
 type Status = 'pending' | 'started' | 'finished'
 
-// const emptyRow: Row = [null, null, null]
 const tiles = [1,2,3,4,5,6,7,8].map(index => { 
   return {
           id: index, 
-          // url: `.png`, we don't need it it's put in the component.
           flipped: false,
           matched: false
         }
@@ -44,8 +39,6 @@ export class Game extends BaseEntity {
   @Column('text', {default: 'pending'})
   status: Status
 
-  // this is a relation, read more about them here:
-  // http://typeorm.io/#/many-to-one-one-to-many-relations
   @OneToMany(_ => Player, player => player.game, {eager:true})
   players: Player[]
 }
@@ -63,7 +56,7 @@ export class Player extends BaseEntity {
   @ManyToOne(_ => Game, game => game.players)
   game: Game
 
-  @Column() 
+  @Column() // to comment before starting the server and then uncomment it and start node . again 
   userId: number
 
   @Column('char', {length: 1})

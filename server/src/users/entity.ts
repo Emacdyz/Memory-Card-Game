@@ -13,12 +13,7 @@ export default class User extends BaseEntity {
   @IsString()
   @MinLength(2)
   @Column('text')
-  firstName: string
-
-  @IsString()
-  @MinLength(2)
-  @Column('text')
-  lastName: string
+  userName: string
 
   @IsEmail()
   @Column('text')
@@ -39,8 +34,6 @@ export default class User extends BaseEntity {
     return bcrypt.compare(rawPassword, this.password)
   }
 
-  // this is a relation, read more about them here:
-  // http://typeorm.io/#/many-to-one-one-to-many-relations
   @OneToMany(_ => Player, player => player.user) 
   players: Player[]
 }
