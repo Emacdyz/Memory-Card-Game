@@ -1,5 +1,5 @@
 import { ValidatorConstraint, ValidatorConstraintInterface } from 'class-validator'
-import { Board, Symbol, Row } from './entities'
+import { Board, Symbol } from './entities'
 
 @ValidatorConstraint()
 export class IsBoard implements ValidatorConstraintInterface {
@@ -17,33 +17,18 @@ export const isValidTransition = (from: Board, to: Board) => {
     if(flippedTiles !== 1) return false
     else return true
 
-  // const changes = from
-  //   .map(
-  //     (row, rowIndex) => row.map((symbol, columnIndex) => ({
-  //       from: symbol,
-  //       to: to[rowIndex][columnIndex]
-  //     }))
-  //   )
-  //   .reduce((a,b) => a.concat(b))
-  //   .filter(change => change.from !== change.to)
-  //
-  // return changes.length === 1 &&
-  //   changes[0].to === playerSymbol &&
-  //   changes[0].from === null
 }
 
-export const calculateWinner = (board: Board): Symbol | null => {
-    return null;
-    // const matchesPlayerX = board.filter(row => row.matched && row.matchedSymbol === 'x').length;
-    // const matchesPlayerO = board.filter(row => row.matched && row.matchedSymbol === 'o').length
-    //
-    // if (matchesPlayerX > matchesPlayerO) {
-    //     return 'x'
-    // }
-    // else {
-    //     return 'o'
-    // }
-}
+// export const calculateWinner = (board: Board): Symbol | null => {
+//     return null;
+//     const player1 = player.symbol['x']
+//     const player2 = player.symbol['o']
+
+//         if (player[player1].score > player[player2].score) return player1 === game.winner
+//         else if (player[player1].score < player[player2].score) return player2
+//         else return null // no winner as the scores are even
+
+// }
 
 export const finished = (board: Board): boolean =>
     board.every(row => row.matched)

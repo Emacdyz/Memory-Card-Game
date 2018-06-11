@@ -4,7 +4,7 @@ import {
 } from 'routing-controllers'
 import User from '../users/entity'
 import { Game, Player, Board, emptyBoard } from './entities'
-import {IsBoard, isValidTransition, calculateWinner, finished} from './logic'
+import {IsBoard, isValidTransition, finished} from './logic'
 import {updateBoardWithMatches,matchFound, missMatchFound, resetFlippedTiles} from './logic'
 import { Validate } from 'class-validator'
 import {io} from '../index'
@@ -82,9 +82,6 @@ export default class GameController {
   }
 
   @Authorized()
-  // the reason that we're using patch here is because this request is not idempotent
-  // http://restcookbook.com/HTTP%20Methods/idempotency/
-  // try to fire the same requests twice, see what happens
   @Patch('/games/:id([0-9]+)')
   async updateGame(
     @CurrentUser() user: User,
@@ -105,14 +102,12 @@ export default class GameController {
 
     update.board = updateBoardWithMatches(update.board);
 
-    console.log('2')
-
-    const winner = calculateWinner(update.board)
-    if (winner) {
-      game.winner = winner
-      game.status = 'finished'
-    }
-    else if (finished(update.board)) {
+    // const winner = calculateWinner(update.board)
+    // if (winner) {
+    //   game.winner = winner
+    //   game.status = 'finished'
+    // }
+    if (finished(update.board)) {
       game.status = 'finished'
     }
     else if (matchFound(game.board, update.board)) {
@@ -121,7 +116,6 @@ export default class GameController {
     else if(missMatchFound(update.board)) {
       game.board = update.board
 
-        // lame fix: going to change turn, send old board so screen is updated
         io.emit('action', {
             type: 'UPDATE_GAME',
             payload: game
@@ -134,9 +128,7 @@ export default class GameController {
     game.board = update.board
     await game.save()
       await player.save()
-
-    console.log('3')
-      // lame fix: only delay if turns changed to avoid a immediate change
+      
       const delay = player.symbol != game.turn ? 800 : 0
 
     setTimeout(() => io.emit('action', {

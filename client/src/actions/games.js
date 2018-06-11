@@ -73,7 +73,6 @@ export const updateGame = (gameId, board) => (dispatch, getState) => {
   const jwt = state.currentUser.jwt
 
   if (isExpired(jwt)) return dispatch(logout())
-  console.log(board)
 
   request
     .patch(`${baseUrl}/games/${gameId}`)
