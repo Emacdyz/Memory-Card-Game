@@ -1,0 +1,44 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin: auto;
+}
+input {
+    border: 2px solid #4A4A4A;
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 25px;
+}
+.submit-button {
+    border: 2px solid #4A4A4A;
+    color: #4A4A4A;
+    width: 35%;
+    padding: 5px;
+    margin-top: 10px;
+}
+.submit-button:hover {
+    border: 2px solid #4742b8;
+    background-color: #4742b8;
+    color: #fff;
+}
+
+.input:enabled {
+    color: #4742b8
+  }
+
+  input:focus, select:focus {
+    outline: 2px solid #4742b8;
+    color: #4742b8;
+  }
+
+  .error { border: 2px solid red; }
+
+  @keyframes autofill {
+    to {
+        color: #4742b8;
+        background: transparent;
+    }
+}
+
+
