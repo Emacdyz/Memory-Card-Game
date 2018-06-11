@@ -27,6 +27,23 @@ class GameDetails extends PureComponent {
 
     updateGame(game.id, board)
   }
+
+  // calculateWinner = () => {
+  //   const {game, player} = this.props
+  //   const player1 = player.symbol['x']
+  //   const player2 = player.symbol['o']
+
+  //   if (player[player1].score > player[player2].score && game.status === 'finnished') {
+  //     console.log(player1)
+  //     return player1
+  //   } else if (player[player1].score < player[player2].score && game.status === 'finnished') {
+  //     console.log(player2)
+  //     return player2
+  //   } else {
+  //     console.log('no winner')
+  //     return null
+  //   } // no winner as the scores are even
+  // }
     
 
   render() {
@@ -62,10 +79,10 @@ class GameDetails extends PureComponent {
         <button onClick={this.joinGame}>Join Game</button>
       }
 
-      {
+      {/* {
         winner &&
         <p>Winner: {users[winner].userName}</p>
-      }
+      } */}
 
       <hr />
 
