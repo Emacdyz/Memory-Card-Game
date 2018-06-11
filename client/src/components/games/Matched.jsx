@@ -1,7 +1,3 @@
-
-
-
-
 const changeMatch = (x) => {
     const matchIndex = game.board.findIndex(match => match.id === x)
         game.board[matchIndex].matched = true;
@@ -30,11 +26,11 @@ export const checkMatches = () => {
         //- flipped tiles back
             changeFlipped(flippedArray[0].id)
             changeFlipped(flippedArray[1].id)
-        //- change back to background??
+        //- change back to background?
         return  game.turn, game.board
     }
     
-  }
+}
 
 
 
