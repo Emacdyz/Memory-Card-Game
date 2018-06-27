@@ -12,8 +12,6 @@ Developed with:
 
 The assisgnment consisted on building a new game from the code of Tic Tac Toe Multiplayer game, gave by the teacher. This way, we learned to understand other's code and work with it.
 
-### 🔷 In Progress!
-
 ## Client side
 
 It's build using `create-react-app`. You first need to `yarn` in order to get all the dependencies locally. To start the app `yarn start` can be used.
